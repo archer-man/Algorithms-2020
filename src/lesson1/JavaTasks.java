@@ -2,6 +2,10 @@ package lesson1;
 
 import kotlin.NotImplementedError;
 
+import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
+
 @SuppressWarnings("unused")
 public class JavaTasks {
     /**
@@ -99,8 +103,35 @@ public class JavaTasks {
      * 121.3
      */
     static public void sortTemperatures(String inputName, String outputName) {
-        throw new NotImplementedError();
+        try{
+            BufferedReader br = new BufferedReader(new FileReader(inputName));
+            BufferedWriter bw = new BufferedWriter(new FileWriter(outputName));
+            List<Integer> lines = new ArrayList<>();
+            String line;
+            while ((line = br.readLine()) != null)
+            {
+                 lines.add((int) (Double.parseDouble(line)*10));
+            }
+            br.close();
+            int[] arr = new int[lines.size()];
+            for (int i=0; i< lines.size();i++){
+                arr[i]=lines.get(i);
+            }
+            Sorts.heapSort(arr);
+            for (int i=0; i<lines.size(); i++){
+                String temp = String.valueOf(arr[i]/10.0);
+                bw.write(temp);
+                bw.write("\n");
+            }
+            bw.close();
+        } catch (Exception e){
+            e.printStackTrace();
+        }
     }
+    /*
+    Трудоёмкость: O(nlog(n))
+    Ресурсоёмкость: O
+    */
 
     /**
      * Сортировка последовательности
