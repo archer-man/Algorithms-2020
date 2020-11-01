@@ -118,6 +118,38 @@ abstract class AbstractTaskTests : AbstractFileTests() {
         } finally {
             File("temp.txt").delete()
         }
+        try {
+            sortTemperatures("input/temp_in2.txt", "temp.txt")
+            assertFileContent(
+                "temp.txt",
+                """
+                    -273.0
+                    -4.2
+                    4.2
+                    200.8
+                    500.0
+                """.trimIndent()
+            )
+        } finally {
+            File("temp.txt").delete()
+        }
+        try {
+            sortTemperatures("input/temp_in3.txt", "temp.txt")
+            assertFileContent(
+                "temp.txt",
+                """
+                    -100.0
+                    0.0
+                    95.6
+                    95.6
+                    95.6
+                    95.6
+                    300.3
+                """.trimIndent()
+            )
+        } finally {
+            File("temp.txt").delete()
+        }
 
         fun testGeneratedTemperatures(size: Int): PerfResult<Unit> {
             try {
@@ -326,6 +358,15 @@ abstract class AbstractTaskTests : AbstractFileTests() {
         val result = arrayOf(null, null, null, null, null, 1, 3, 9, 13, 18, 23)
         mergeArrays(arrayOf(4, 9, 15, 20, 23), result)
         assertArrayEquals(arrayOf(1, 3, 4, 9, 9, 13, 15, 18, 20, 23, 23), result)
+
+        var customResult = arrayOf(null, Integer.MIN_VALUE, Integer.MAX_VALUE)
+        mergeArrays(arrayOf(0), customResult)
+        assertArrayEquals(arrayOf(Integer.MIN_VALUE, 0, Integer.MAX_VALUE), customResult)
+
+        customResult = arrayOf(null, null, null, -6, 0, 1000, 2000)
+        mergeArrays(arrayOf(-999, 8, 6000), customResult)
+        assertArrayEquals(arrayOf(-999, -6, 0, 8, 1000, 2000, 6000), customResult)
+
 
         fun testGeneratedArrays(
             firstSize: Int,

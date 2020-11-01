@@ -46,6 +46,9 @@ abstract class AbstractAlgorithmsTests {
         assertEquals(3 to 4, optimizeBuyAndSell("input/buysell_in1.txt"))
         assertEquals(8 to 12, optimizeBuyAndSell("input/buysell_in2.txt"))
         assertEquals(3 to 4, optimizeBuyAndSell("input/buysell_in3.txt"))
+        assertEquals(1 to 2, optimizeBuyAndSell("input/buysell_in4.txt"))
+        assertEquals(1 to 10, optimizeBuyAndSell("input/buysell_in5.txt"))
+        assertEquals(3 to 7, optimizeBuyAndSell("input/buysell_in6.txt"))
         try {
             val expectedAnswer = generatePrices(1000)
             assertEquals(expectedAnswer, optimizeBuyAndSell("temp_prices.txt"))
@@ -144,5 +147,8 @@ abstract class AbstractAlgorithmsTests {
         assertEquals(148933, calcPrimesNumber(2000000))
         assertEquals(348513, calcPrimesNumber(5000000))
         assertEquals(664579, calcPrimesNumber(10000000))
+        assertEquals(4846, calcPrimesNumber(46905))
+        assertEquals(5551, calcPrimesNumber(54557))
+        assertEquals(5761455, calcPrimesNumber(100000000))
     }
 }
