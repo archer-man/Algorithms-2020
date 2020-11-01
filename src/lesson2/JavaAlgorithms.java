@@ -48,6 +48,7 @@ public class JavaAlgorithms {
             while (scanner.hasNextInt()) {
                 prices.add(i++, scanner.nextInt());
             }
+            scanner.close();
             Integer min = prices.get(0);
             Integer max = prices.get(0);
             for (i = 1; i < prices.size(); i++) {
@@ -163,6 +164,20 @@ public class JavaAlgorithms {
      * Единица простым числом не считается.
      */
     static public int calcPrimesNumber(int limit) {
-        throw new NotImplementedError();
+        int counter = 0;
+        if (limit <= 1) return 0;
+        if (limit == 2) return 1;
+        for (int i = 1; i <= limit; i += 2) {
+            for (int j = 2; j * j <= i; ++j) {
+                if (i % j == 0) {
+                    counter--;
+                    break;
+                }
+            }
+            counter++;
+        }
+        return counter;
     }
+    // Трудоёмкость: O(sqrt(n))
+    // Ресурсоёмкость: O(n)
 }
