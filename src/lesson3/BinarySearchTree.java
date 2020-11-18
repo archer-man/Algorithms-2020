@@ -101,7 +101,20 @@ public class BinarySearchTree<T extends Comparable<T>> extends AbstractSet<T> im
      */
     @Override
     public boolean remove(Object o) {
-        // TODO
+        Node<T> current = find((T) o);
+        if (current==null) throw new NoSuchElementException();
+        if (current == root) {
+            root = root.next
+            size--
+            return
+        }
+        var previous = start
+        while (previous != null && previous.next != current) {
+            previous = previous.next
+        }
+        previous ?: throw NoSuchElementException()
+        previous.next = current!!.next
+        size--
         throw new NotImplementedError();
     }
 
