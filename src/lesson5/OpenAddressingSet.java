@@ -111,7 +111,25 @@ public class OpenAddressingSet<T> extends AbstractSet<T> {
     @NotNull
     @Override
     public Iterator<T> iterator() {
-        // TODO
+        /*Iterator<String> it = new Iterator<String>() {
+            private int count = 0;
+
+            @Override
+            public boolean hasNext() {
+                return root.children.entrySet().iterator().hasNext();
+
+            }
+
+            @Override
+            public String next() {
+                return root.children.values().toString();
+            }
+
+            @Override
+            public void remove() {
+                throw new UnsupportedOperationException();
+            }
+        };*/
         throw new NotImplementedError();
     }
 }
