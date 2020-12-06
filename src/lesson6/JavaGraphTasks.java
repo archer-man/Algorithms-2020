@@ -22,8 +22,8 @@ public class JavaGraphTasks {
      * <p>
      * Пример:
      * <p>
-     * G -- H
-     * |    |
+     *      G -- H
+     *      |    |
      * A -- B -- C -- D
      * |    |    |    |
      * E    F -- I    |
@@ -49,8 +49,8 @@ public class JavaGraphTasks {
      * <p>
      * Пример:
      * <p>
-     * G -- H
-     * |    |
+     *      G -- H
+     *      |    |
      * A -- B -- C -- D
      * |    |    |    |
      * E    F -- I    |
@@ -69,23 +69,6 @@ public class JavaGraphTasks {
      */
     public static Graph minimumSpanningTree(Graph graph) {
         GraphBuilder answer = new GraphBuilder();
-        /*for (int i=0; i<graph.getVertices().size();i++){
-
-        }*/
-        /*Graph.Vertex a = answer.addVertex("A");
-        Graph.Vertex b =answer.addVertex("B");
-        Graph.Vertex c =answer.addVertex("C");
-        answer.addConnection(a,b,2);
-        answer.addConnection(b,c,3);
-        answer.addConnection(c,a,1);*/
-
-        //while (answer.build().getVertices().size() < graph.getVertices().size()){
-            /*for (Graph.Vertex vertex : graph.getVertices()){
-                Graph.Edge min = ;
-                for (Map.Entry<Graph.Vertex, Graph.Edge> element : graph.getConnections(vertex).entrySet()){
-                    if (min.getWeight() > entry.getValue()) {
-                }
-            }*/
         for (Graph.Vertex vertex : graph.getVertices()) {
             GraphBuilder.VertexImpl a = new GraphBuilder.VertexImpl("A");
             GraphBuilder.VertexImpl b = new GraphBuilder.VertexImpl("B");
@@ -109,8 +92,8 @@ public class JavaGraphTasks {
      * <p>
      * Дан граф без циклов (получатель), например
      * <p>
-     * G -- H -- J
-     * |
+     *      G -- H -- J
+     *      |
      * A -- B -- D
      * |         |
      * C -- F    I
@@ -162,8 +145,8 @@ public class JavaGraphTasks {
      * <p>
      * Пример:
      * <p>
-     * G -- H
-     * |    |
+     *      G -- H
+     *      |    |
      * A -- B -- C -- D
      * |    |    |    |
      * E    F -- I    |
