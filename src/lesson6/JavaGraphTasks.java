@@ -59,8 +59,8 @@ public class JavaGraphTasks {
      * <p>
      * Ответ:
      * <p>
-     * G    H
-     * |    |
+     *      G    H
+     *      |    |
      * A -- B -- C -- D
      * |    |    |
      * E    F    I
