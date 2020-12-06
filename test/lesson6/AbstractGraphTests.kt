@@ -281,18 +281,18 @@ abstract class AbstractGraphTests {
             setOf(cross["A"], cross["B"], cross["C"], cross["D"]),
             cross.largestIndependentVertexSet()
         )
-            val cycled = GraphBuilder().apply {
-                val a = addVertex("A")
-                val b = addVertex("B")
-                val c = addVertex("C")
-                val d = addVertex("D")
-                val e = addVertex("E")
-                addConnection(a, e)
-                addConnection(b, e)
-                addConnection(c, e)
-                addConnection(d, a)
-                addConnection(d, c)
-            }.build()
+        val cycled = GraphBuilder().apply {
+            val a = addVertex("A")
+            val b = addVertex("B")
+            val c = addVertex("C")
+            val d = addVertex("D")
+            val e = addVertex("E")
+            addConnection(a, e)
+            addConnection(b, e)
+            addConnection(c, e)
+            addConnection(d, a)
+            addConnection(d, c)
+        }.build()
         assertFailsWith<IllegalArgumentException>() {
             cycled.largestIndependentVertexSet()
         }
