@@ -22,8 +22,8 @@ public class JavaGraphTasks {
      * <p>
      * Пример:
      * <p>
-     *      G -- H
-     *      |    |
+     * G -- H
+     * |    |
      * A -- B -- C -- D
      * |    |    |    |
      * E    F -- I    |
@@ -49,8 +49,8 @@ public class JavaGraphTasks {
      * <p>
      * Пример:
      * <p>
-     *      G -- H
-     *      |    |
+     * G -- H
+     * |    |
      * A -- B -- C -- D
      * |    |    |    |
      * E    F -- I    |
@@ -59,8 +59,8 @@ public class JavaGraphTasks {
      * <p>
      * Ответ:
      * <p>
-     *      G    H
-     *      |    |
+     * G    H
+     * |    |
      * A -- B -- C -- D
      * |    |    |
      * E    F    I
@@ -109,8 +109,8 @@ public class JavaGraphTasks {
      * <p>
      * Дан граф без циклов (получатель), например
      * <p>
-     *      G -- H -- J
-     *      |
+     * G -- H -- J
+     * |
      * A -- B -- D
      * |         |
      * C -- F    I
@@ -129,46 +129,27 @@ public class JavaGraphTasks {
      * <p>
      * Эта задача может быть зачтена за пятый и шестой урок одновременно
      */
-    public static Set<Graph.Vertex> largestIndependentVertexSet(Graph graph){
+    public static Set<Graph.Vertex> largestIndependentVertexSet(Graph graph) {
         try {
             Set<Graph.Vertex> answerSet = new LinkedHashSet<>();
             Set<Graph.Vertex> extraVertices = new LinkedHashSet<>();
-            //for (Graph.Vertex vertex : graph.getVertices()) {
-            /*for (Graph.Edge element : graph.getConnections(vertex).values()) {
-
-                extraVertices.add(element.getEnd());
-                answerSet.add(element.getBegin());
-            }*/
-            /* 1 Graph.Vertex first = graph.getVertices().iterator().next();
-            answerSet.add(first);
-            for (Graph.Edge element : graph.getConnections(first).values()) {
-                extraVertices.add(element.getEnd());
-            }
-            for (Graph.Vertex extraVertex : extraVertices) {
-                for (Graph.Edge goodConnection : graph.getConnections(extraVertex).values()) {
-                    if (!answerSet.contains(goodConnection.getBegin()) && !answerSet.contains(goodConnection.getEnd())) {
-                        answerSet.add(goodConnection.getEnd());
-                    }
-                }
-            } 1 */
-            for (Graph.Edge connection : graph.getEdges()){
-                if ((answerSet.contains(connection.getBegin()) && extraVertices.contains(connection.getEnd())) || (answerSet.contains(connection.getEnd()) && extraVertices.contains(connection.getBegin()))||(answerSet.contains(connection.getBegin()) && answerSet.contains(connection.getEnd()))){
+            for (Graph.Edge connection : graph.getEdges()) {
+                if ((answerSet.contains(connection.getBegin()) && extraVertices.contains(connection.getEnd())) || (answerSet.contains(connection.getEnd()) && extraVertices.contains(connection.getBegin())) || (answerSet.contains(connection.getBegin()) && answerSet.contains(connection.getEnd()))) {
                     throw new IllegalArgumentException();
-                } else if(!extraVertices.contains(connection.getBegin())) {
+                } else if (!extraVertices.contains(connection.getBegin())) {
                     answerSet.add(connection.getBegin());
                     extraVertices.add(connection.getEnd());
-                }else if (!extraVertices.contains(connection.getEnd())){
+                } else if (!extraVertices.contains(connection.getEnd())) {
                     answerSet.add(connection.getEnd());
                 }
             }
-            if (graph.getEdges().size()==0 && graph.getVertices().size()!=0){
+            if (graph.getEdges().size() == 0 && graph.getVertices().size() != 0) {
                 answerSet.addAll(graph.getVertices());
             }
             return answerSet;
-        } catch (NoSuchElementException e){
+        } catch (NoSuchElementException e) {
             return new LinkedHashSet<>();
         }
-
     }
 
     /**
@@ -181,8 +162,8 @@ public class JavaGraphTasks {
      * <p>
      * Пример:
      * <p>
-     *      G -- H
-     *      |    |
+     * G -- H
+     * |    |
      * A -- B -- C -- D
      * |    |    |    |
      * E    F -- I    |
