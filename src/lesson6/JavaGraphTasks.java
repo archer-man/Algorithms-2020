@@ -152,7 +152,9 @@ public class JavaGraphTasks {
                 }
             } 1 */
             for (Graph.Edge connection : graph.getEdges()){
-                if(!extraVertices.contains(connection.getBegin())) {
+                if ((answerSet.contains(connection.getBegin()) && extraVertices.contains(connection.getEnd())) || (answerSet.contains(connection.getEnd()) && extraVertices.contains(connection.getBegin()))||(answerSet.contains(connection.getBegin()) && answerSet.contains(connection.getEnd()))){
+                    throw new IllegalArgumentException();
+                } else if(!extraVertices.contains(connection.getBegin())) {
                     answerSet.add(connection.getBegin());
                     extraVertices.add(connection.getEnd());
                 }else if (!extraVertices.contains(connection.getEnd())){
