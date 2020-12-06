@@ -69,6 +69,16 @@ public class JavaGraphTasks {
      */
     public static Graph minimumSpanningTree(Graph graph) {
         GraphBuilder answer = new GraphBuilder();
+        /*Set<Graph.Vertex> startingVertices = new LinkedHashSet<>();
+        Set<Graph.Vertex> endingVertices = new LinkedHashSet<>();
+        for (Graph.Edge connection : graph.getEdges()) {
+            if ((!startingVertices.contains(connection.getBegin())&&!endingVertices.contains(connection.getEnd()))||(startingVertices.contains(connection.getBegin())&&!endingVertices.contains(connection.getEnd()))) {
+                startingVertices.add(connection.getBegin());
+                endingVertices.add(connection.getEnd());
+                answer.addConnection(connection.getBegin(), connection.getEnd(),1);
+                answer.addVertex(connection.getBegin().getName());
+            }
+        }*/
         for (Graph.Vertex vertex : graph.getVertices()) {
             GraphBuilder.VertexImpl a = new GraphBuilder.VertexImpl("A");
             GraphBuilder.VertexImpl b = new GraphBuilder.VertexImpl("B");
@@ -82,9 +92,12 @@ public class JavaGraphTasks {
                 answer.addConnection(min.getBegin(), min.getEnd(), min.getWeight());
             }
         }
-        //}
         return answer.build();
     }
+    /*
+    Трудоёмкость: O(n^2)
+    Ресурсоёмкость: O(n)
+    */
 
     /**
      * Максимальное независимое множество вершин в графе без циклов.
@@ -134,6 +147,10 @@ public class JavaGraphTasks {
             return new LinkedHashSet<>();
         }
     }
+    /*
+    Трудоёмкость: O(n)
+    Ресурсоёмкость: O(n)
+    */
 
     /**
      * Наидлиннейший простой путь.

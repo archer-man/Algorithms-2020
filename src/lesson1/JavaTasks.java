@@ -103,29 +103,25 @@ public class JavaTasks {
      * 99.5
      * 121.3
      */
-    static public void sortTemperatures(String inputName, String outputName) {
-        try {
-            BufferedReader br = new BufferedReader(new FileReader(inputName));
-            BufferedWriter bw = new BufferedWriter(new FileWriter(outputName));
-            List<Integer> lines = new ArrayList<>();
-            String line;
-            while ((line = br.readLine()) != null) {
-                lines.add((int) (Double.parseDouble(line) * 10));
+    static public void sortTemperatures(String inputName, String outputName) throws IOException{
+        try (BufferedReader br = new BufferedReader(new FileReader(inputName))) {
+            try (BufferedWriter bw = new BufferedWriter(new FileWriter(outputName))) {
+                List<Integer> lines = new ArrayList<>();
+                String line;
+                while ((line = br.readLine()) != null) {
+                        lines.add((int) (Double.parseDouble(line) * 10));
+                }
+                int[] arr = new int[lines.size()];
+                for (int i = 0; i < lines.size(); i++) {
+                    arr[i] = lines.get(i);
+                }
+                Sorts.heapSort(arr);
+                for (int i = 0; i < lines.size(); i++) {
+                        String temp = String.valueOf(arr[i] / 10.0);
+                    bw.write(temp);
+                    bw.write("\n");
+                }
             }
-            br.close();
-            int[] arr = new int[lines.size()];
-            for (int i = 0; i < lines.size(); i++) {
-                arr[i] = lines.get(i);
-            }
-            Sorts.heapSort(arr);
-            for (int i = 0; i < lines.size(); i++) {
-                String temp = String.valueOf(arr[i] / 10.0);
-                bw.write(temp);
-                bw.write("\n");
-            }
-            bw.close();
-        } catch (Exception e) {
-            e.printStackTrace();
         }
     }
     /*
@@ -192,4 +188,8 @@ public class JavaTasks {
             }
         }
     }
+    /*
+    Трудоёмкость: O(n)
+    Ресурсоёмкость: O(n)
+    */
 }
