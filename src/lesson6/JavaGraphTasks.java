@@ -2,10 +2,8 @@ package lesson6;
 
 import kotlin.NotImplementedError;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.io.IOException;
+import java.util.*;
 
 import lesson6.impl.GraphBuilder;
 
@@ -24,8 +22,8 @@ public class JavaGraphTasks {
      * <p>
      * Пример:
      * <p>
-     * G -- H
-     * |    |
+     *      G -- H
+     *      |    |
      * A -- B -- C -- D
      * |    |    |    |
      * E    F -- I    |
@@ -51,8 +49,8 @@ public class JavaGraphTasks {
      * <p>
      * Пример:
      * <p>
-     * G -- H
-     * |    |
+     *      G -- H
+     *      |    |
      * A -- B -- C -- D
      * |    |    |    |
      * E    F -- I    |
@@ -61,8 +59,8 @@ public class JavaGraphTasks {
      * <p>
      * Ответ:
      * <p>
-     * G    H
-     * |    |
+     *      G    H
+     *      |    |
      * A -- B -- C -- D
      * |    |    |
      * E    F    I
@@ -111,8 +109,8 @@ public class JavaGraphTasks {
      * <p>
      * Дан граф без циклов (получатель), например
      * <p>
-     * G -- H -- J
-     * |
+     *      G -- H -- J
+     *      |
      * A -- B -- D
      * |         |
      * C -- F    I
@@ -131,8 +129,44 @@ public class JavaGraphTasks {
      * <p>
      * Эта задача может быть зачтена за пятый и шестой урок одновременно
      */
-    public static Set<Graph.Vertex> largestIndependentVertexSet(Graph graph) {
-        throw new NotImplementedError();
+    public static Set<Graph.Vertex> largestIndependentVertexSet(Graph graph){
+        try {
+            Set<Graph.Vertex> answerSet = new LinkedHashSet<>();
+            Set<Graph.Vertex> extraVertices = new LinkedHashSet<>();
+            //for (Graph.Vertex vertex : graph.getVertices()) {
+            /*for (Graph.Edge element : graph.getConnections(vertex).values()) {
+
+                extraVertices.add(element.getEnd());
+                answerSet.add(element.getBegin());
+            }*/
+            /* 1 Graph.Vertex first = graph.getVertices().iterator().next();
+            answerSet.add(first);
+            for (Graph.Edge element : graph.getConnections(first).values()) {
+                extraVertices.add(element.getEnd());
+            }
+            for (Graph.Vertex extraVertex : extraVertices) {
+                for (Graph.Edge goodConnection : graph.getConnections(extraVertex).values()) {
+                    if (!answerSet.contains(goodConnection.getBegin()) && !answerSet.contains(goodConnection.getEnd())) {
+                        answerSet.add(goodConnection.getEnd());
+                    }
+                }
+            } 1 */
+            for (Graph.Edge connection : graph.getEdges()){
+                if(!extraVertices.contains(connection.getBegin())) {
+                    answerSet.add(connection.getBegin());
+                    extraVertices.add(connection.getEnd());
+                }else if (!extraVertices.contains(connection.getEnd())){
+                    answerSet.add(connection.getEnd());
+                }
+            }
+            if (graph.getEdges().size()==0 && graph.getVertices().size()!=0){
+                answerSet.addAll(graph.getVertices());
+            }
+            return answerSet;
+        } catch (NoSuchElementException e){
+            return new LinkedHashSet<>();
+        }
+
     }
 
     /**
@@ -145,8 +179,8 @@ public class JavaGraphTasks {
      * <p>
      * Пример:
      * <p>
-     * G -- H
-     * |    |
+     *      G -- H
+     *      |    |
      * A -- B -- C -- D
      * |    |    |    |
      * E    F -- I    |
