@@ -76,6 +76,16 @@ abstract class AbstractOpenAddressingSetTest {
                 )
             }
         }
+        val customSet = mutableSetOf<Int>(300, 200, 2, 0, 5, 42223)
+        customSet.remove(200)
+        assertEquals(5, customSet.size)
+        customSet.remove(300)
+        customSet.remove(2)
+        customSet.remove(0)
+        customSet.remove(5)
+        customSet.remove(42223)
+        assertFalse(customSet.remove(5))
+        assertFalse(customSet.iterator().hasNext())
     }
 
     protected fun doIteratorTest() {
@@ -118,6 +128,14 @@ abstract class AbstractOpenAddressingSetTest {
             }
             println("All clear!")
         }
+        val customSet = mutableSetOf<Int>(96, 663, 34)
+        customSet.remove(96)
+        assertTrue(customSet.iterator().hasNext())
+        assertEquals(663, customSet.iterator().next())
+        assertTrue(customSet.iterator().hasNext())
+        customSet.remove(663)
+        customSet.remove(34)
+        assertFalse(customSet.iterator().hasNext())
     }
 
     protected fun doIteratorRemoveTest() {
