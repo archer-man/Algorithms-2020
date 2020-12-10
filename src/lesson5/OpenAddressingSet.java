@@ -105,6 +105,10 @@ public class OpenAddressingSet<T> extends AbstractSet<T> {
         size--;
         return true;
     }
+    /*
+        Трудоёмкость: O(1/(1-n/k)), где n-кол-во элементов, k-размер массива
+        Ресурсоёмкость: O(n)
+    */
 
     /**
      * Создание итератора для обхода таблицы
@@ -127,6 +131,8 @@ public class OpenAddressingSet<T> extends AbstractSet<T> {
             public boolean hasNext() {
                 return counter != size;
             }
+            // Трудоёмкость: O(1)
+            // Ресурсоёмкость: O(1)
 
             @Override
             public T next() {
@@ -135,6 +141,11 @@ public class OpenAddressingSet<T> extends AbstractSet<T> {
                 while (storage[index] == null || storage[index] == removed) index++;
                 return (T) storage[index++];
             }
+
+            /*
+             Трудоёмкость: O(n)
+            Ресурсоёмкость: O(n)
+             */
         };
     }
 }

@@ -82,8 +82,11 @@ public class JavaAlgorithms {
         }
         return new Pair<>(buyingIndex + 1, sellingIndex + 1);
     }
-    // Трудоёмкость: O(n)
-    // Ресурсоёмкость: O(n)
+
+    /*
+        Трудоёмкость: O(n)
+        Ресурсоёмкость: O(n)
+    */
 
     /**
      * Задача Иосифа Флафия.
@@ -178,6 +181,8 @@ public class JavaAlgorithms {
         }
         return counter;
     }
-    // Трудоёмкость: O(sqrt(n))
-    // Ресурсоёмкость: O(n)
+    /*
+        Трудоёмкость: O(sqrt(n))
+        Ресурсоёмкость: O(n)
+     */
 }

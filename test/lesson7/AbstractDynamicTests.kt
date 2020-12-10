@@ -9,6 +9,9 @@ abstract class AbstractDynamicTests {
         assertEquals("13", longestCommonSubSequence("123", "13"))
         assertEquals("здс", longestCommonSubSequence("здравствуй мир", "мы здесь"))
         assertEquals("emt ole", longestCommonSubSequence("nematode knowledge", "empty bottle"))
+        assertEquals("ADH", longestCommonSubSequence("ABCDGH", "AEDFHR"))
+        assertEquals("GTAB rat", longestCommonSubSequence("AGGTAB breath", "GXTXAYB conservative"))
+        assertEquals("Nede".length, longestCommonSubSequence("NemAtode", "kNOwledge").length)
         val expectedLength = "e kerwelkkd r".length
         assertEquals(
             expectedLength, longestCommonSubSequence(
@@ -64,6 +67,8 @@ abstract class AbstractDynamicTests {
         assertEquals(28, shortestPathOnField("input/field_in4.txt"))
         assertEquals(222, shortestPathOnField("input/field_in5.txt"))
         assertEquals(15, shortestPathOnField("input/field_in6.txt"))
+        assertEquals(8, shortestPathOnField("input/field_in7.txt"))
+        assertEquals(7, shortestPathOnField("input/field_in8.txt"))
     }
 
 }
