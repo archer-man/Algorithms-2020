@@ -21,7 +21,31 @@ public class JavaDynamicTasks {
      * При сравнении подстрок, регистр символов *имеет* значение.
      */
     public static String longestCommonSubSequence(String first, String second) {
-        throw new NotImplementedError();
+        int firstLength = first.length();
+        int secondLength = second.length();
+        int[][] matrix = new int[firstLength + 1][secondLength + 1];
+        for (int i = 0; i < firstLength; i++)
+            for (int j = 0; j < secondLength; j++)
+                if (first.charAt(i) == second.charAt(j))
+                    matrix[i + 1][j + 1] = matrix[i][j] + 1;
+                else
+                    matrix[i + 1][j + 1] = Math.max(matrix[i + 1][j], matrix[i][j + 1]);
+        StringBuilder string = new StringBuilder();
+        int k = firstLength;
+        int c = secondLength;
+        while (k != 0 && c != 0) {
+            if (matrix[k][c] == matrix[k - 1][c])
+                k--;
+            else if (matrix[k][c] == matrix[k][c - 1])
+                c--;
+            else {
+                assert first.charAt(k - 1) == second.charAt(c - 1);
+                string.append(first.charAt(k - 1));
+                k--;
+                c--;
+            }
+        }
+        return string.reverse().toString();
     }
 
     /**

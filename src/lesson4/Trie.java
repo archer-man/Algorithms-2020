@@ -92,27 +92,6 @@ public class Trie extends AbstractSet<String> implements Set<String> {
     @NotNull
     @Override
     public Iterator<String> iterator() {
-        /*Iterator<String> it = new Iterator<String>() {
-            private int count = 0;
-
-            @Override
-            public boolean hasNext() {
-               return root.children.entrySet().iterator().hasNext();
-            }
-
-            @Override
-            public String next() {
-                   return root.children.values().toString();
-            }
-
-            @Override
-            public void remove() {
-                throw new UnsupportedOperationException();
-            }
-        };
-        return it;
-
-         */
         throw new NotImplementedError();
     }
 

@@ -2,7 +2,6 @@ package lesson6;
 
 import kotlin.NotImplementedError;
 
-import java.io.IOException;
 import java.util.*;
 
 import lesson6.impl.GraphBuilder;
@@ -69,16 +68,6 @@ public class JavaGraphTasks {
      */
     public static Graph minimumSpanningTree(Graph graph) {
         GraphBuilder answer = new GraphBuilder();
-        /*Set<Graph.Vertex> startingVertices = new LinkedHashSet<>();
-        Set<Graph.Vertex> endingVertices = new LinkedHashSet<>();
-        for (Graph.Edge connection : graph.getEdges()) {
-            if ((!startingVertices.contains(connection.getBegin())&&!endingVertices.contains(connection.getEnd()))||(startingVertices.contains(connection.getBegin())&&!endingVertices.contains(connection.getEnd()))) {
-                startingVertices.add(connection.getBegin());
-                endingVertices.add(connection.getEnd());
-                answer.addConnection(connection.getBegin(), connection.getEnd(),1);
-                answer.addVertex(connection.getBegin().getName());
-            }
-        }*/
         for (Graph.Vertex vertex : graph.getVertices()) {
             GraphBuilder.VertexImpl a = new GraphBuilder.VertexImpl("A");
             GraphBuilder.VertexImpl b = new GraphBuilder.VertexImpl("B");
