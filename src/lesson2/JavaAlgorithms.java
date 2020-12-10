@@ -5,6 +5,7 @@ import kotlin.Pair;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -170,19 +171,22 @@ public class JavaAlgorithms {
         int counter = 0;
         if (limit <= 1) return 0;
         if (limit == 2) return 1;
-        for (int i = 1; i <= limit; i += 2) {
-            for (int j = 2; j * j <= i; ++j) {
-                if (i % j == 0) {
-                    counter--;
-                    break;
+        boolean array[] = new boolean[limit + 1];
+        Arrays.fill(array, Boolean.TRUE);
+        for (int i = 2; i * i <= limit; i++) {
+            if (array[i]) {
+                for (int j = i * i; j <= limit; j += i) {
+                    array[j] = false;
                 }
             }
-            counter++;
+        }
+        for (int i = 2; i <= limit; i++) {
+            if (array[i]) counter++;
         }
         return counter;
     }
     /*
-        Трудоёмкость: O(sqrt(n))
+        Трудоёмкость: O(n*log(log(n)))
         Ресурсоёмкость: O(n)
      */
 }
